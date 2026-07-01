@@ -1,6 +1,6 @@
 # updater-maven
 
-[![Latest Release](https://img.shields.io/github/v/release/SemRels/updater-maven?label=version\&color=blue)](https://github.com/SemRels/updater-maven/releases/latest)
+[![Latest Release](https://img.shields.io/github/v/release/SemRels/updater-maven?label=version&color=blue)](https://github.com/SemRels/updater-maven/releases/latest)
 
 Updates the project version in a Maven `pom.xml` file.
 
