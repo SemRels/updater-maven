@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://registry.semrel.io/schemas/plugins/updater-maven/v1.json",
+  "$id": "https://registry.semrel.io/schemas/plugins/maven/v1.json",
   "title": "updater-maven plugin configuration",
   "description": "Schema v1 for the updater-maven semrel plugin. Configure via SEMREL_* environment variables.",
   "type": "object",
