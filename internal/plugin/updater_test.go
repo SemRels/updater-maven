@@ -14,7 +14,11 @@ func TestUpdaterUpdatePom(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	defer os.RemoveAll(dir)
+	t.Cleanup(func() {
+		if err := os.RemoveAll(dir); err != nil {
+			t.Errorf("remove temporary directory: %v", err)
+		}
+	})
 
 	file := filepath.Join(dir, "pom.xml")
 	original := "<project><modelVersion>4.0.0</modelVersion><groupId>x</groupId><artifactId>demo</artifactId><version>1.2.3</version></project>"
@@ -51,7 +55,11 @@ func TestUpdaterMissingVersion(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	defer os.RemoveAll(dir)
+	t.Cleanup(func() {
+		if err := os.RemoveAll(dir); err != nil {
+			t.Errorf("remove temporary directory: %v", err)
+		}
+	})
 
 	file := filepath.Join(dir, "pom.xml")
 	if err := os.WriteFile(file, []byte("<project></project>"), 0o644); err != nil {

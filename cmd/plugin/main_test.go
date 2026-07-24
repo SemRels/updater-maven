@@ -15,7 +15,11 @@ func TestRunUpdatesPom(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	defer os.RemoveAll(dir)
+	t.Cleanup(func() {
+		if err := os.RemoveAll(dir); err != nil {
+			t.Errorf("remove temporary directory: %v", err)
+		}
+	})
 
 	file := filepath.Join(dir, "pom.xml")
 	if err := os.WriteFile(file, []byte("<project><version>1.0.0</version></project>"), 0o644); err != nil {
