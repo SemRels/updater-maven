@@ -1,6 +1,10 @@
 # updater-maven
 
 [![Latest Release](https://img.shields.io/github/v/release/SemRels/updater-maven?label=version&color=blue)](https://github.com/SemRels/updater-maven/releases/latest)
+[![CI](https://github.com/SemRels/updater-maven/actions/workflows/ci.yml/badge.svg)](https://github.com/SemRels/updater-maven/actions/workflows/ci.yml)
+[![License](https://img.shields.io/github/license/SemRels/updater-maven)](LICENSE)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/SemRels/updater-maven/badge)](https://scorecard.dev/viewer/?uri=github.com/SemRels/updater-maven)
+[![REUSE status](https://api.reuse.software/badge/github.com/SemRels/updater-maven)](https://api.reuse.software/info/github.com/SemRels/updater-maven)
 
 Updates the project version in a Maven `pom.xml` file.
 
