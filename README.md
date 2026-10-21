@@ -39,17 +39,19 @@ cosign verify ghcr.io/semrels/updater-maven:latest \
 
 ```yaml
 plugins:
-  - name: updater-maven
-    path: ~/.semrel/plugins/semrel-plugin-updater-maven
-    env:
-      SEMREL_PLUGIN_FILE: "pom.xml"
+  - uses: "@semrel/updater-maven"
+    phase: pre-tag
+    args:
+      file: "pom.xml"
 ```
 
-## `SEMREL_PLUGIN_*` variables
+## Options
 
-| Name | Required | Description | Default |
-| --- | --- | --- | --- |
-| `SEMREL_PLUGIN_FILE` | Optional | Path to the Maven POM file to update. | pom.xml |
+Every option can be set as an entry under `args` in `.semrel.yaml`. semrel passes each entry to the plugin as the environment variable shown in the table, so you can also set that variable directly (for example in your CI environment) instead of using `args`.
+
+| Argument | Environment variable | Required | Description | Default |
+| --- | --- | --- | --- | --- |
+| `file` | `SEMREL_PLUGIN_FILE` | Optional | Path to the Maven POM file to update. | pom.xml |
 
 ## `SEMREL_*` release context used
 
