@@ -1,6 +1,10 @@
 # updater-maven
 
 [![Latest Release](https://img.shields.io/github/v/release/SemRels/updater-maven?label=version&color=blue)](https://github.com/SemRels/updater-maven/releases/latest)
+[![CI](https://github.com/SemRels/updater-maven/actions/workflows/ci.yml/badge.svg)](https://github.com/SemRels/updater-maven/actions/workflows/ci.yml)
+[![License](https://img.shields.io/github/license/SemRels/updater-maven)](LICENSE)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/SemRels/updater-maven/badge)](https://scorecard.dev/viewer/?uri=github.com/SemRels/updater-maven)
+[![REUSE status](https://api.reuse.software/badge/github.com/SemRels/updater-maven)](https://api.reuse.software/info/github.com/SemRels/updater-maven)
 
 Updates the project version in a Maven `pom.xml` file.
 
@@ -26,7 +30,7 @@ Images are signed with [cosign](https://github.com/sigstore/cosign) and include 
 
 ```bash
 cosign verify ghcr.io/semrels/updater-maven:latest \
-  --certificate-identity-regexp 'https://github.com/SemRels/updater-maven/.github/workflows/release.yml.*' \
+  --certificate-identity-regexp 'https://github.com/SemRels/updater-maven/.github/workflows/container.yml.*' \
   --certificate-oidc-issuer https://token.actions.githubusercontent.com
 ```
 
@@ -35,17 +39,19 @@ cosign verify ghcr.io/semrels/updater-maven:latest \
 
 ```yaml
 plugins:
-  - name: updater-maven
-    path: ~/.semrel/plugins/semrel-plugin-updater-maven
-    env:
-      SEMREL_PLUGIN_FILE: "pom.xml"
+  - uses: "@semrel/updater-maven"
+    phase: pre-tag
+    args:
+      file: "pom.xml"
 ```
 
-## `SEMREL_PLUGIN_*` variables
+## Options
 
-| Name | Required | Description | Default |
-| --- | --- | --- | --- |
-| `SEMREL_PLUGIN_FILE` | Optional | Path to the Maven POM file to update. | pom.xml |
+Every option can be set as an entry under `args` in `.semrel.yaml`. semrel passes each entry to the plugin as the environment variable shown in the table, so you can also set that variable directly (for example in your CI environment) instead of using `args`.
+
+| Argument | Environment variable | Required | Description | Default |
+| --- | --- | --- | --- | --- |
+| `file` | `SEMREL_PLUGIN_FILE` | Optional | Path to the Maven POM file to update. | pom.xml |
 
 ## `SEMREL_*` release context used
 
